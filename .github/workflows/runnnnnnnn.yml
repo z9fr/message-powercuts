@@ -1,6 +1,8 @@
 name: ok run now
 
 on:
+  schedule:
+    - cron:  '00 23 * * *'
   push:
     branches: [ master ]
   pull_request:
