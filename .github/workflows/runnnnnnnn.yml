@@ -6,6 +6,11 @@ on:
   pull_request:
     branches: [ master ]
     
+env:
+  TWILIO_ACCOUNT_SID: a
+  TWILIO_AUTH_TOKEN: token
+  MY_PHONE_NUMBER: number
+    
 jobs:
   build:
     runs-on: ubuntu-latest
