@@ -7,9 +7,9 @@ on:
     branches: [ master ]
     
 env:
-  TWILIO_ACCOUNT_SID: a
-  TWILIO_AUTH_TOKEN: token
-  MY_PHONE_NUMBER: number
+  TWILIO_ACCOUNT_SID:  ${{ secrets.TWILIO_ACCOUNT_SID }}
+  TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
+  MY_PHONE_NUMBER: ${{ secrets.MY_PHONE_NUMBER }}
     
 jobs:
   build:
