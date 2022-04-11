@@ -13,12 +13,9 @@ permissions:
   contents: read
 
 jobs:
-  build:
-
+  test:
     runs-on: ubuntu-latest
-
     steps:
-    
     - uses: actions/checkout@v3
     - name: Set up Python 3.10
       uses: actions/setup-python@v3
@@ -29,9 +26,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Lint with flake8
+    - name: Run the app 
       run: |
-        python script.py
-    - name: Test with pytest
-      run: |
-        pytest
+          output=$(python script.py v2.21)
+          output="${output//'%'/'%25'}"
+          output="${output//$'\n'/'%0A'}"
+          output="${output//$'\r'/'%0D'}" 
+          echo "::set-output name=changelog::$output"
